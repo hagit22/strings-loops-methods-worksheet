@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>דף עבודה מודרך – חלק ב׳ – פרמטרים וערכי החזרה</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      color: #2d3748;
+      margin: 0;
+      padding: 20px;
+      direction: rtl;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      padding: 40px 50px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2b4a8f;
+      font-size: 1.8rem;
+      border-bottom: 3px solid #2b4a8f;
+      padding-bottom: 15px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 35px;
+      font-size: 1rem;
+    }
+
+    .intro-box {
+      background: #eef2ff;
+      border-right: 4px solid #2b4a8f;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 35px;
+      font-size: 1rem;
+    }
+
+    .exercise {
+      margin-bottom: 45px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .exercise-header {
+      background: #2b4a8f;
+      color: white;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .exercise-body {
+      padding: 25px;
+    }
+
+    .task-description {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-bottom: 25px;
+      font-size: 1rem;
+    }
+
+    .step {
+      margin-bottom: 20px;
+    }
+
+    .step-label {
+      font-weight: bold;
+      color: #2b4a8f;
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      margin: 0 0 8px 0;
+    }
+
+    .hint-btn {
+      background: none;
+      border: 1.5px solid #aaa;
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 0.9rem;
+      color: #555;
+      cursor: pointer;
+      margin-top: 6px;
+      font-family: inherit;
+      direction: rtl;
+      transition: all 0.2s ease;
+    }
+
+    .hint-btn:hover {
+      border-color: #2b4a8f;
+      color: #2b4a8f;
+    }
+
+    .hint-content {
+      display: none;
+      background: #fffbea;
+      border: 1px solid #f6d860;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    .hint-content.visible {
+      display: block;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .code-block {
+      display: block;
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin: 10px 0;
+      white-space: pre;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      font-family: 'Courier New', monospace;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 20px 0;
+    }
+
+    .file-nudge {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+      color: #166534;
+    }
+
+    .test-nudge {
+      background: #eff6ff;
+      border: 1px solid #93c5fd;
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #1e40af;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <h1>דף עבודה מודרך – חלק ב׳</h1>
+  <div class="subtitle">פעולות עם פרמטרים וערכי החזרה</div>
+
+  <div class="intro-box">
+    <strong>מה עושים בשלב הזה?</strong> לוקחים את הקוד שכתבתם ב- <code>LoopsAndStrings.cs</code> וכותבים אותו מחדש בצורה אחרת.<br><br>
+    הפעם: ה- <code>Main</code> אחראי על <strong>קליטה מהמשתמש</strong> ועל <strong>הדפסת התוצאה</strong>.<br>
+    הפעולות אחראיות רק על <strong>החישוב</strong> – מקבלות נתונים כפרמטרים ומחזירות תוצאה.<br><br>
+    <strong>קובץ חדש:</strong> צרו פרויקט חדש ב-Visual Studio. שם הקובץ: <code>LoopsStringsAndMethods.cs</code>
+  </div>
+
+  <!-- ===== EXERCISE 1 ===== -->
+  <div class="exercise">
+    <div class="exercise-header">תרגיל 1 – ספירת מופעים של תו</div>
+    <div class="exercise-body">
+      <div class="task-description">
+        הפעולה תקבל מחרוזת ותו, ותחזיר כמה פעמים התו מופיע במחרוזת.
+        ה- Main יקלוט את הנתונים, יקרא לפעולה, ויקבל ממנה את התוצאה ויציג אותה.
+      </div>
+
+      <div class="step">
+        <div class="step-label">שלב א׳ – מה ה- Main צריך לעשות?</div>
+        <p>חשבו: אם הפעולה לא קולטת כלום מהמשתמש – מי קולט? מה בדיוק ה- Main צריך לקלוט?</p>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          ה- Main קולט את שני הנתונים: המחרוזת והתו. לאחר מכן הוא יעביר אותם לפעולה.
+          <div class="code-block">Console.Write("Enter a string: ");
+string text = Console.ReadLine();
+Console.Write("Enter a character: ");
+char tav = Console.ReadLine()[0];</div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="step">
+        <div class="step-label">שלב ב׳ – מה הפעולה מקבלת כפרמטרים?</div>
+        <p>הפעולה צריכה לחשב את מספר המופעים של התו. אילו נתונים היא צריכה לקבל כדי לעשות את זה?</p>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          היא צריכה לקבל את המחרוזת ואת התו – אלו הנתונים שהיא צריכה לחישוב.<br>
+          החתימה תראה כך: <code>static ??? CountOccurrences(string text, char tav)</code><br>
+          שימו לב לסימני השאלה – מה צריך להיות שם?
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="step">
+        <div class="step-label">שלב ג׳ – מה הפעולה מחזירה?</div>
+        <p>הפעולה מחשבת כמה פעמים התו מופיע. מה היא צריכה להחזיר? ומה הטיפוס של הערך הזה?</p>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          היא מחזירה מספר שלם – מספר המופעים. לכן הטיפוס הוא <code>int</code>.<br>
+          החתימה המלאה של הפעולה: <code>static int CountOccurrences(string text, char tav)</code><br>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-label">שלב ד׳ – איך הפעולה מעבירה את התוצאה חזרה ל- Main?</div>
+        <p>הגדרנו שהפעולה מחזירה <code>int</code> – אבל איפה בקוד זה קורה בפועל?</p>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          בסוף הפעולה, אחרי הלולאה, כותבים: <code>return count;</code><br>
+          זו הפקודה שמעבירה את הערך בחזרה למי שקרא לפעולה.
+        </div>
+      </div>      
+
+      <hr class="divider">
+
+      <div class="step">
+        <div class="step-label">שלב ה׳ – מה משתנה בגוף הפעולה?</div>
+        <p>גוף הפעולה כמעט זהה לקוד הישן – אבל יש דבר אחד שצריך להסיר. מה זה?</p>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          מסירים את קליטת הנתונים מהמשתמש (<code>Console.ReadLine</code>) ואת ההדפסה (<code>Console.WriteLine</code>).<br>
+          הפעולה רק עושה את הלולאה והספירה, ומחזירה את <code>count</code>.
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="step">
+        <div class="step-label">שלב ו׳ – איך ה- Main מקבל את התוצאה ומדפיס אותה?</div>
+        <p>ה- Main קורא לפעולה ומעביר לה את הנתונים. הפעולה מחזירה ערך – מה עושים איתו?</p>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          שומרים את הערך המוחזר במשתנה, ואז מדפיסים:
+          <div class="code-block">int result = CountOccurrences(text, tav);
+Console.WriteLine("Character appears " + result + " times");</div>
+        </div>
+      </div>
+
+      <div class="file-nudge">
+        ✅ סיימתם את תרגיל 1? בדקו שהקוד עובד לפני שממשיכים לתרגיל 2.
+      </div>
+      <div class="test-nudge">
+        📋 עברו לקובץ <code>TestingTables.docx</code> והשלימו את טבלת הבדיקות לתרגיל 1.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== EXERCISE 2 ===== -->
+  <div class="exercise">
+    <div class="exercise-header">תרגיל 2 – ספירת מילים במשפט</div>
+    <div class="exercise-body">
+      <div class="task-description">
+        הפעולה תקבל משפט ותחזיר כמה מילים יש בו. ה- Main יקלוט את המשפט, יקרא לפעולה, ויציג את התוצאה.
+      </div>
+
+      <div class="step">
+        <div class="step-label">מה ה- Main קולט? מה הפעולה מקבלת כפרמטר?</div>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          ה- Main קולט את המשפט. הפעולה מקבלת פרמטר אחד: <code>string sentence</code>.
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="step">
+        <div class="step-label">מה הפעולה מחזירה?</div>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          מספר שלם – מספר המילים. חתימת הפעולה: <code>static int CountWords(string sentence)</code>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="step">
+        <div class="step-label">איך ה- Main קולט, קורא לפעולה, ומדפיס?</div>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          <div class="code-block">Console.Write("Enter a sentence: ");
+string sentence = Console.ReadLine();
+int result = CountWords(sentence);
+Console.WriteLine("Number of words: " + result);</div>
+        </div>
+      </div>
+
+      <div class="file-nudge">
+        ✅ סיימתם? בדקו שהקוד עובד.
+      </div>
+      <div class="test-nudge">
+        📋 עברו לקובץ <code>TestingTables.docx</code> והשלימו את טבלת הבדיקות לתרגיל 2.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== EXERCISE 3 ===== -->
+  <div class="exercise">
+    <div class="exercise-header">תרגיל 3 – טקסט עד הנקודה</div>
+    <div class="exercise-body">
+      <div class="task-description">
+        הפעולה תקבל טקסט ותחזיר את החלק שלפני הנקודה הראשונה. ה- Main יקלוט, יקרא לפעולה, ויציג.
+      </div>
+
+      <div class="step">
+        <div class="step-label">שימו לב – מה הטיפוס של ערך ההחזרה כאן?</div>
+        <p>הפעולות הקודמות החזירו <code>int</code>. מה מחזירה הפעולה הזו?</p>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          הפעם הפעולה מחזירה מחרוזת – את הטקסט עד הנקודה. לכן הטיפוס הוא <code>string</code>.<br>
+          חתימת הפעולה: <code>static string TextUntilPeriod(string text)</code><br>
+          בגוף הפעולה – במקום להדפיס כל תו, <strong>בנו מחרוזת תוצאה</strong> ובסוף החזירו אותה.
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="step">
+        <div class="step-label">איך בונים את מחרוזת התוצאה?</div>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          הגדירו משתנה מחרוזת ריקה לפני הלולאה: <code>string result = "";</code><br>
+          בתוך הלולאה, אם התו אינו נקודה – הוסיפו אותו: <code>result = result + text[i];</code><br>
+          בסוף: <code>return result;</code>
+        </div>
+      </div>
+
+      <div class="file-nudge">
+        ✅ סיימתם? בדקו שהקוד עובד.
+      </div>
+      <div class="test-nudge">
+        📋 עברו לקובץ <code>TestingTables.docx</code> והשלימו את טבלת הבדיקות לתרגיל 3.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== EXERCISE 4 ===== -->
+  <div class="exercise">
+    <div class="exercise-header">תרגיל 4 – טקסט בין סוגריים</div>
+    <div class="exercise-body">
+      <div class="task-description">
+        הפעולה תקבל טקסט ותחזיר את הטקסט שבין הסוגריים. ה- Main יקלוט, יקרא לפעולה, ויציג.
+      </div>
+
+      <div class="step">
+        <div class="step-label">בדומה לתרגיל 3 – מה הטיפוס? ואיך בונים את התוצאה?</div>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          גם כאן מחזירים <code>string</code>. בנו מחרוזת תוצאה ריקה לפני הלולאה, הוסיפו תווים רק כשאתם "בתוך" הסוגריים, והחזירו בסוף.
+        </div>
+      </div>
+
+      <div class="file-nudge">
+        ✅ סיימתם? בדקו שהקוד עובד.
+      </div>
+      <div class="test-nudge">
+        📋 עברו לקובץ <code>TestingTables.docx</code> והשלימו את טבלת הבדיקות לתרגיל 4.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== EXERCISE 5 ===== -->
+  <div class="exercise">
+    <div class="exercise-header">תרגיל 5 – פלינדרום</div>
+    <div class="exercise-body">
+      <div class="task-description">
+        הפעולה תקבל טקסט ותחזיר האם הוא פלינדרום. ה- Main יקלוט, יקרא לפעולה, ויציג.
+      </div>
+
+      <div class="step">
+        <div class="step-label">הפעם הטיפוס שונה – מה הפעולה מחזירה?</div>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          הפעולה מחזירה <code>true</code> או <code>false</code> – כלומר טיפוס <code>bool</code>.<br>
+          חתימה: <code>static bool IsPalindrome(string text)</code><br>
+          בגוף: אם מצאתם זוג שלא תואם – <code>return false;</code>. בסוף הלולאה: <code>return true;</code>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="step">
+        <div class="step-label">איך ה- Main מדפיס את התוצאה?</div>
+        <button class="hint-btn" onclick="toggleHint(this)">💡 רמז</button>
+        <div class="hint-content">
+          <div class="code-block">bool result = IsPalindrome(text);
+if (result == true)
+{
+    Console.WriteLine("Palindrome!");
+}
+else
+{
+    Console.WriteLine("Not a palindrome.");
+}</div>
+        </div>
+      </div>
+
+      <div class="file-nudge">
+        ✅ סיימתם את כל התרגילים! בדקו שכל הקוד עובד.
+      </div>
+      <div class="test-nudge">
+        📋 עברו לקובץ <code>TestingTables.docx</code> והשלימו את טבלת הבדיקות לתרגיל 5.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleHint(btn) {
+    const hint = btn.nextElementSibling;
+    if (hint.classList.contains('visible')) {
+      hint.classList.remove('visible');
+    } else {
+      hint.classList.add('visible');
+    }
+  }
+</script>
+
+</body>
+</html>
